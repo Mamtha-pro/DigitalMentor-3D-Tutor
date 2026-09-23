@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-spinners": "^0.17.1",
+    "recharts": "^3.10.1"
+  }
+}
