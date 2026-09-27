@@ -1,0 +1,57 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+
+        # Identity Service
+        - id: identity-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/auth/**,/api/users/**
+
+        # Tutor Service
+        - id: tutor-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/chat/**
+
+        # Learning Service
+        - id: learning-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/study-plans/**,/api/study-sessions/**,/api/notes/**
+
+        # Resource Service - curated resources
+        - id: resource-curate
+          uri: http://localhost:8084
+          predicates:
+            - Path=/curate-resources/**
+
+        # Resource Service - web search
+        - id: resource-search
+          uri: http://localhost:8084
+          predicates:
+            - Path=/web-search/**
+
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"
+              - "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
