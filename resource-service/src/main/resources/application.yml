@@ -1,0 +1,18 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: resource-service
+
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/mindmentor_resource}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-this-super-secret-key-before-deploying-to-production-01234567890}
+
+  web-search:
+    provider: ${WEB_SEARCH_PROVIDER:duckduckgo}
+    api-key: ${WEB_SEARCH_API_KEY:}

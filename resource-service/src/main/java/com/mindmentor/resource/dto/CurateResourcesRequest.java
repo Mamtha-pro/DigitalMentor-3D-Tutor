@@ -1,0 +1,13 @@
+package com.mindmentor.resource.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+
+@Data
+public class CurateResourcesRequest {
+
+    private String userId;
+
+    @NotBlank(message = "Subject is required")
+    private String subject;
+}
