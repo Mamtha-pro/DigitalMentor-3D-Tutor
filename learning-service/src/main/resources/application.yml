@@ -1,0 +1,14 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: learning-service
+
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/mindmentor_learning}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-this-super-secret-key-before-deploying-to-production-01234567890}
